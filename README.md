@@ -5,18 +5,21 @@
 
 ```bash
 npm i
+```
 
 ## Usage
 
-bash
+```bash
 npm run dev
 
 # or
 
 npm run build
 npm run start
+```
 
 ## Task
+```
 Тестове завдання:
 Засетити Typescript проект з eslint та базою даних. База даних довільна. Для eslint рекомендуємо використовувати плагін airbnb.
 Використати TS інтерфейси та enums там, де це можливо та потрібно.

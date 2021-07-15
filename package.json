@@ -1,0 +1,35 @@
+{
+  "name": "chatbots-studio-test-task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/app.ts",
+  "scripts": {
+    "build": "rm -rf dist && tsc && cp -r ./src/views ./dist/src/views",
+    "watch": "tsc --watch",
+    "dev": "nodemon",
+    "start": "node ./dist/src/app.js"
+  },
+  "author": "Eduard",
+  "license": "ISC",
+  "dependencies": {
+    "@handlebars/allow-prototype-access": "^1.0.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.2",
+    "http-errors": "^1.7.2",
+    "mongoose": "^5.13.2",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/express-handlebars": "^5.3.1",
+    "@types/http-errors": "^1.8.1",
+    "@types/node": "^14.17.5",
+    "@types/node-fetch": "^2.5.11",
+    "@types/request": "^2.48.6",
+    "eslint": "^7.30.0",
+    "nodemon": "^2.0.12",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5"
+  }
+}

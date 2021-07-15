@@ -1,6 +1,10 @@
 import express from 'express';
 import exphbs from 'express-handlebars';
 import path from 'path';
+import { initDb } from './db/index';
+import baseRoutes from './routes/base';
+import listRoutes from './routes/list';
+import uploadRoutes from './routes/upload';
 
 require('dotenv').config();
 
@@ -19,6 +23,9 @@ app.set('views', PATH_VIEWS);
 
 app.use(express.urlencoded({ extended: true }));
 
+app.use('/list/dog/images', listRoutes);
+app.use('/upload/dog', uploadRoutes);
+app.use('/', baseRoutes);
 
 initDb()
   .then(() =>

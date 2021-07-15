@@ -1,0 +1,51 @@
+<form action='/upload/dog/image' method='POST'>
+  <div>
+    <div class='input-group mb-3 w-25'>
+      <input
+        class='form-control'
+        type='text'
+        id='width'
+        placeholder='Width'
+        name='width'
+        oninput='changeSideSize("width")'
+      />
+      <input
+        class='form-control'
+        type='text'
+        id='height'
+        placeholder='Height'
+        name='height'
+        oninput='changeSideSize("height")'
+      />
+      <input class='form-control' type='hidden' id='url' value='{{urlImageDog}}' name='urlImage' />
+      <button class='btn btn-primary' type='submit' name='action'>
+        Save
+      </button>
+    </div>
+  </div>
+</form>
+
+<div id='image-placeholder'>
+  <img src='{{urlImageDog}}' id='dog' />
+</div>
+
+<script>
+  function changeSideSize(type) {
+  const dog = document.querySelector('#dog');
+
+  switch (type) {
+    case 'width':
+      const width = document.getElementById('width').value;
+      if (!isNaN(width)) {
+        dog.width = width;
+      }
+      break;
+    case 'height':
+      const height = document.getElementById('height').value;
+      if (!isNaN(height)) {
+        dog.height = height;
+      }
+      break;
+  }
+}
+</script>

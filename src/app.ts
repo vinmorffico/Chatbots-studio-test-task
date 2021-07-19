@@ -1,14 +1,15 @@
 import express from 'express';
 import exphbs from 'express-handlebars';
+import createHttpError from 'http-errors';
 import path from 'path';
 import { initDb } from './db/index';
-import baseRoutes from './routes/base';
+import { errorHandlerMiddleware } from './middlewares/error.middleware';
 import listRoutes from './routes/list';
 import uploadRoutes from './routes/upload';
 
 require('dotenv').config();
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 const PATH_VIEWS = path.join(__dirname, '/views');
 
 const app = express();
@@ -25,7 +26,17 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/list/dog/images', listRoutes);
 app.use('/upload/dog', uploadRoutes);
-app.use('/', baseRoutes);
+
+app.use((req, _res, next) => {
+  if (req.method !== 'GET') {
+    next(createHttpError(405));
+    return;
+  }
+
+  next(createHttpError(404));
+});
+
+app.use(errorHandlerMiddleware);
 
 initDb()
   .then(() =>

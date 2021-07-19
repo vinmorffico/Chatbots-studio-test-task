@@ -5,6 +5,7 @@
 
 ```bash
 npm i
+# then create .env from .env.example template
 ```
 
 ## Usage
